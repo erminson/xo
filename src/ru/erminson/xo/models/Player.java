@@ -2,18 +2,18 @@ package ru.erminson.xo.models;
 
 public class Player {
     private final String name;
-    private final String figure;
+    private final Figure figure;
 
-    Player(final PlayerBuilder playerBuilder) {
-        this.name = playerBuilder.getName();
-        this.figure = playerBuilder.getFigure();
+    Player(final String name, final Figure figure) {
+        this.name = name;
+        this.figure = figure;
     }
 
     public String getName() {
         return this.name;
     }
 
-    public String getFigure() {
+    public Figure getFigure() {
         return this.figure;
     }
 
