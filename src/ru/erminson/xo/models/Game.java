@@ -1,22 +1,25 @@
 package ru.erminson.xo.models;
 
 public class Game {
-    private static final String GAME_NAME = "XO";
-    private Player[] players;
+    private final Player[] players;
+    private final Field field;
+    private final String name;
 
-    public String getGameName() {
-        return Game.GAME_NAME;
+    public Game(final Player[] players, final Field field, final String name) {
+        this.players = players;
+        this.field = field;
+        this.name = name;
     }
 
     public Player[] getPlayers() {
         return players;
     }
 
-    public Player currentPlayer() {
-        return null;
+    public Field getField() {
+        return field;
     }
 
-    public boolean move(final int x, final int y) {
-        return false;
+    public String getName() {
+        return name;
     }
 }
