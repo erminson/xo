@@ -1,6 +1,5 @@
 package ru.erminson.xo.models;
 
-import ru.erminson.xo.models.exceptions.AlreadyOccupiedException;
 import ru.erminson.xo.models.exceptions.InvalidPointException;
 
 import java.awt.*;
@@ -23,13 +22,9 @@ public class Field {
         return figures[point.x][point.y];
     }
 
-    public void setFigure(final Point point, final Figure figure) throws InvalidPointException, AlreadyOccupiedException {
+    public void setFigure(final Point point, final Figure figure) throws InvalidPointException {
         if (!isValidPoint(point)) {
             throw new InvalidPointException();
-        }
-
-        if (figures[point.x][point.y] != null) {
-            throw new AlreadyOccupiedException();
         }
 
         figures[point.x][point.y] = figure;
