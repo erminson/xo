@@ -5,13 +5,19 @@ import ru.erminson.xo.models.exceptions.InvalidPointException;
 import java.awt.*;
 
 public class Field {
-    private static final int FIELD_SIZE = 3;
     private static final int MIN_COORDINATE = 0;
-    private static final int MAX_COORDINATE = FIELD_SIZE;
-    private final Figure[][] figures = new Figure[FIELD_SIZE][FIELD_SIZE];
+
+    private final int fieldSize;
+    private final Figure[][] figures;// = new Figure[FIELD_SIZE][FIELD_SIZE];
+
+    public Field(final int fieldSize) {
+        this.fieldSize = fieldSize;
+        this.figures = new Figure[fieldSize][fieldSize];
+    }
+
 
     public int getSize() {
-        return FIELD_SIZE;
+        return this.fieldSize;
     }
 
     public Figure getFigure(final Point point) throws InvalidPointException {
@@ -35,6 +41,6 @@ public class Field {
     }
 
     private boolean isValidCoordinate(final int coordinate) {
-        return coordinate >= MIN_COORDINATE && coordinate < MAX_COORDINATE;
+        return coordinate >= MIN_COORDINATE && coordinate < figures.length;
     }
 }
