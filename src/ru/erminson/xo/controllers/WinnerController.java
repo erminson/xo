@@ -37,20 +37,21 @@ public class WinnerController {
         return null;
     }
 
-    private boolean check(final Field field, final Point currentPoint, final IPointGenerator pointGenerator) {
+    private boolean check(final Field field,
+                          final Point currentPoint,
+                          final IPointGenerator pointGenerator) {
         final Figure currentFigure;
         final Figure nextFigure;
         final Point nextPoint = pointGenerator.next(currentPoint);
 
         try {
             currentFigure = field.getFigure(currentPoint);
+            if (currentFigure == null) {
+                return false;
+            }
             nextFigure = field.getFigure(nextPoint);
         } catch (final InvalidPointException e) {
             return true;
-        }
-
-        if (currentFigure == null) {
-            return false;
         }
 
         if (currentFigure != nextFigure) {
