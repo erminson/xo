@@ -6,6 +6,7 @@ import ru.erminson.xo.controllers.WinnerController;
 import ru.erminson.xo.models.Field;
 import ru.erminson.xo.models.Figure;
 import ru.erminson.xo.models.Game;
+import ru.erminson.xo.models.Player;
 import ru.erminson.xo.models.exceptions.AlreadyOccupiedException;
 import ru.erminson.xo.models.exceptions.InvalidPointException;
 
@@ -20,6 +21,12 @@ public class ConsoleView {
 
     public void show(final Game game) {
         System.out.format("Game name: %s\n", game.getName());
+
+        System.out.println("Players:");
+
+        for (Player player : game) {
+            System.out.format("Player name: %s figure: %s\n", player.getName(), player.getFigure());
+        }
         final Field field = game.getField();
         for (int x = 0; x < field.getSize(); x++) {
             if (x != 0)
