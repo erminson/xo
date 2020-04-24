@@ -1,16 +1,22 @@
 package ru.erminson.xo.models;
 
 import ru.erminson.xo.models.exceptions.InvalidPointException;
+import ru.erminson.xo.models.exceptions.InvalidBoardSizeException;
 
 import java.awt.*;
 
 public class Field {
     private static final int MIN_COORDINATE = 0;
+    private static final int MIN_SIZE = 3;
 
     private final int fieldSize;
     private final Figure[][] figures;// = new Figure[FIELD_SIZE][FIELD_SIZE];
 
-    public Field(final int fieldSize) {
+    public Field(final int fieldSize) throws InvalidBoardSizeException {
+        if (fieldSize < MIN_SIZE) {
+            throw new InvalidBoardSizeException();
+        }
+
         this.fieldSize = fieldSize;
         this.figures = new Figure[fieldSize][fieldSize];
     }
